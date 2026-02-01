@@ -1,0 +1,20 @@
+name: Pipeline CI-CD TP5
+on: [push] # Se lance automatiquement à chaque modification du code
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Recupération du code
+        uses: actions/checkout@v4
+      
+      - name: Installation de Python (Phase de Build)
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Execution des Tests (Phase de Test)
+        run: python test_app.py
+
+      - name: Simulation du Deploiement (Phase de Deploy)
+        run: echo "Succès ! L'application est validée et prête pour la production."
